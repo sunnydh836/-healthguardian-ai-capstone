@@ -1,0 +1,56 @@
+# Agent Configuration
+agents:
+  intake:
+    name: "Intake Agent"
+    description: "Initial patient data collection and triage"
+    enabled: true
+    priority: 1
+  
+  medication_manager:
+    name: "Medication Manager"
+    description: "Medication tracking and reminders"
+    enabled: true
+    priority: 2
+    reminder_intervals: [8, 12, 20]  # hours
+  
+  vital_signs_monitor:
+    name: "Vital Signs Monitor"
+    description: "Continuous vital signs monitoring"
+    enabled: true
+    priority: 3
+    thresholds:
+      blood_pressure:
+        systolic: [90, 140]
+        diastolic: [60, 90]
+      heart_rate: [60, 100]
+      temperature: [36.1, 37.8]
+      blood_glucose: [70, 180]
+  
+  health_advisor:
+    name: "Health Advisor"
+    description: "Personalized health recommendations"
+    enabled: true
+    priority: 4
+
+# LLM Configuration
+llm:
+  provider: "openai"
+  model: "gpt-4"
+  temperature: 0.7
+  max_tokens: 2000
+  
+# Database Configuration
+database:
+  pool_size: 10
+  max_overflow: 20
+  pool_timeout: 30
+  
+# Monitoring
+monitoring:
+  metrics_interval: 60
+  health_check_interval: 30
+  alert_endpoints:
+    - type: "email"
+      enabled: true
+    - type: "sms"
+      enabled: false
